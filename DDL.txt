@@ -1,0 +1,41 @@
+/* まず、postsテーブルを作成します: */
+CREATE TABLE subjects (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(50),
+    body TEXT,
+    created DATETIME DEFAULT NULL,
+    modified DATETIME DEFAULT NULL
+);
+
+/* それから、テスト用に記事をいくつか入れておきます: */
+INSERT INTO subjects (title,body,created)
+    VALUES ('将来について', '将来の備考', NOW());
+INSERT INTO subjects (title,body,created)
+    VALUES ('人生について', '人生の備考', NOW());
+INSERT INTO subjects (title,body,created)
+    VALUES ('家族について', '家族の備考。', NOW());
+
+
+// Comment のテーブルを作成して、ここから作業を開始する
+- VIewの中で登録を行えるようにする
+CREATE TABLE comments (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    commenter VARCHAR(50),
+    body TEXT,
+    subject_id INT,
+    created DATETIME DEFAULT NULL,
+    modified DATETIME DEFAULT NULL
+);
+
+// 以下規約の記載から、comments_id -> comment_idへと変更した
+“foreignKey: アソシエーション先のモデルを検索するための外部キーの名前。これは複数のhasOneを定義するためによく使われます。このキーのデフォルト値は元モデルの単数形に _id がついたものです。上記のUserモデルの例では、user_id となります。”
+
+抜粋：: Cake Software Foundation, Inc. “CakePHP Cookbook”。 iBooks.
+DROP TABLE comments;
+
+INSERT INTO comments (commenter,body,subject_id,created)
+    VALUES ('AAA','BodyAAA',1,NOW());
+INSERT INTO comments (commenter,body,subject_id,created)
+    VALUES ('BBB','BodyBBB',1,NOW());
+INSERT INTO comments (commenter,body,subject_id,created)
+    VALUES ('CCC','BodyCCC',1,NOW());
