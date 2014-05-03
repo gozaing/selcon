@@ -3,7 +3,7 @@
 
 <?php
 echo $this->Html->Link(
-       'Add Post',
+       'Add Subject',
        array('controller' => 'subjects',
              'action' => 'add')
        );
