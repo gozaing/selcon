@@ -4,7 +4,10 @@ class SubjectsController extends AppController {
     public $components = array('Session');
 
     public function index () {
-        $this->set('Subjects', $this->Subject->find('all'));
+        $this->set('Subjects', $this->Subject->find('all',array(
+                                                    'conditions' => 'user_id ='.$this->Auth->user('id')
+                                                    )));
+        $this->set('title_for_layout' , 'ストーリー');
     }
 
     public function view($id = null) {
@@ -19,7 +22,10 @@ class SubjectsController extends AppController {
     }
 
     public function add() {
+
         if ($this->request->is('post')) {
+
+            $this->request->data['Subject']['user_id'] = $this->Auth->user('id'); //Added this line
 
             $this->Subject->create();
             if($this->Subject->save($this->request->data)) {

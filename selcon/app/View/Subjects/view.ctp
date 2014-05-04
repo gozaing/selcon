@@ -1,4 +1,13 @@
 
+<?php
+echo $this->Html->Link(
+       'Back to Subject',
+       array('controller' => 'subjects',
+             'action' => 'index')
+       );
+?>
+
+
 <h1><?php echo h($subject['Subject']['title']); ?></h1>
 
 <p>
@@ -23,7 +32,7 @@
 
             <?php
                 echo $this->Form->postLink('delete' ,
-                                           array('controller' => 'comments' , 'action' => 'delete' , $comment['id']),
+                                           array('controller' => 'comments' , 'action' => 'delete' , $comment['subject_id'],$comment['id'] ),
                                            array('confirm' => 'Are you sure?')
                                             );
             ?>

@@ -17,7 +17,7 @@ echo $this->Html->Link(
     </tr>
 
     <!-- ここから、$posts配列をループして、投稿記事の情報を表示 -->
-    <?php echo var_dump($Subjects); ?>
+    <?php //echo var_dump($Subjects); ?>
 
     <?php foreach ($Subjects as $subject): ?>
     <tr>
