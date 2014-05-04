@@ -10,7 +10,6 @@
           if(isset($user)):
             echo $this->Html->link('ログアウト', '/users/logout');
           else:
-            echo $this->Html->link('ログイン', '/users/login');
             echo $this->Html->link('新規登録', '/users/register');
           endif;
         ?>
