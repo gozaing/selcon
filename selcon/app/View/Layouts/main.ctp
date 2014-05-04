@@ -1,29 +1,22 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <?php echo $this->Html->charset(); ?>
-    <title><?php echo $title_for_layout; ?> / selcon</title>
-    <?php echo $this->Html->css('main'); ?>
-  </head>
-  <body>
-  <div id="container">
-    <div id="header">
-      <div id="header_menu">
-        <?php
-          if(isset($user)):
-            echo $this->Html->link('ログアウト', '/users/logout');
-          else:
-            echo $this->Html->link('ログイン', '/users/login');
-            echo $this->Html->link('新規登録', '/users/register');
-          endif;
-        ?>
-      </div>
-      <div id="header_logo">
-        <h1>selcon</h1>
-      </div>
-      <div id="content">
-        <?php echo $this->fetch('content'); ?>
-      </div>
-    </div>
-  </body>
+
+ <html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Bad And Ass">
+<meta name="author" content="Bad And Ass Company">
+<link rel="shortcut icon" href="favicon.ico">
+<title>BadAss</title>
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+<script src="/js/html5shiv.js"></script>
+<script src="/js/respond.min.js"></script>
+<![endif]-->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<?php echo $this->fetch('content'); ?>
+</body>
 </html>

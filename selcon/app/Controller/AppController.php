@@ -34,12 +34,36 @@ class AppController extends Controller {
 
     //public $components = array('DebugKit.Toolbar'); // この行を追加
 
-    public $components = array('Auth');
+    // 20140504 del
+    //public $components = array('Auth');
 
     public function beforeFilter(){
         $this->Auth->allow();
         $this->set('user', $this->Auth->user());
         $this->layout = 'main'; //レイアウトを指定
     }
+
+    public $components = array(
+                            'Session',
+                            'Cookie',
+                            'DebugKit.Toolbar',
+                            'Auth' => array(
+                              'flash' => array(
+                                'element' => 'alert',
+                                'key' => 'auth',
+                                'params' => array(
+                                  'plugin' => 'BoostCake',
+                                  'class' => 'alert-error'
+                                ),
+                              ),
+                            ),
+    );
+
+  public $helpers = array(
+    'Session',
+    'Html' => array('className' => 'BoostCake.BoostCakeHtml'),
+    'Form' => array('className' => 'BoostCake.BoostCakeForm'),
+    'Paginator' => array('className' => 'BoostCake.BoostCakePaginator'),
+  );
 
 }
