@@ -3,7 +3,11 @@
 
 <div class="container" >
 <h2>Subject</h2>
+
+
 <?php echo $this->Paginator->pagination(array('ul' => 'pagination')); ?>
+
+
 <?php
 echo $this->Html->Link(
        'Add Subject',
@@ -28,7 +32,7 @@ echo $this->Html->Link(
     <th><?php echo $this->Html->link($subject['Subject']['title'], array('controller' => 'subjects',
                                 'action' => 'view',
                                 $subject['Subject']['id'])); ?></th>
-    <td><?php echo h($subject['Subject']['body']) ?></td>
+    <td><?php echo nl2br($subject['Subject']['body']) ?></td>
     <td><?php echo h($subject['Subject']['created'])?></td>
     <td>            <?php
                 echo $this->Html->link('Edit',array('controller' => 'subjects',

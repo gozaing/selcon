@@ -30,7 +30,7 @@ echo $this->Html->Link(
 <?php foreach( $subject['Comment'] as $comment ):?>
   <tr>
     <td><?php echo h($comment['commenter']) ?></td>
-    <td><?php echo h($comment['body']) ?></td>
+    <td><?php echo nl2br($comment['body']) ?></td>
     <td><?php
                 echo $this->Form->postLink('delete' ,
                                            array('controller' => 'comments' , 'action' => 'delete' , $comment['subject_id'],$comment['id'] ),

@@ -30,7 +30,7 @@ class UsersController extends AppController {
       //ログイン
       //$this->request->dataの値を使用してログインする規約になっている
       $this->Auth->login();
-      $this->redirect('index');
+      $this->redirect(array('controller' => 'subjects' , 'action' => 'index'));
     }
   }
 
