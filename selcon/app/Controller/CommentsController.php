@@ -22,13 +22,14 @@ class CommentsController extends AppController {
     }
 
 //delete
-    public function delete($id = null){
+    public function delete($subjectid, $id = null){
         if ($this->request->is('get')){
             throw new notFoundException();
         }
         $this->Comment->delete($id);
         $this->Session->setFlash(__('the comment with id:%s has been deleted',h($id)));
-        return $this->redirect(array('controller' => 'subjects','action' => 'index'));
+        //return $this->redirect(array('controller' => 'subjects','action' => 'index'));
+        return $this->redirect(array('controller' => 'subjects' ,'action' => 'view' , $subjectid));
         //return $this->redirect(array('controller' => 'subjects' ,'action' => 'view' ,1));
 
 
