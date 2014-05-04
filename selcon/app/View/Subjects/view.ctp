@@ -1,4 +1,9 @@
 
+<div class="container">
+
+<div class="row">
+<div class="col-md-8 col-md-offset-2">
+
 <?php
 echo $this->Html->Link(
        'Back to Subject',
@@ -8,49 +13,77 @@ echo $this->Html->Link(
 ?>
 
 
-<h1><?php echo h($subject['Subject']['title']); ?></h1>
-
-<p>
-    <small>
-        created: <?php echo $subject['Subject']['created']; ?>
-    </small>
-</p>
+<h2><?php echo h($subject['Subject']['title']); ?></h2>
 <p><?php echo h($subject['Subject']['body']); ?></p>
 
 <h2>Comment</h2>
+<table class="table table-striped table-bordered table-hover">
+<thead style="background-color: #b7e5d6;">
+  <tr>
+    <th><?php echo "Commenter";?></th>
+    <th><?php echo "Body";?></th>
+    <th><?php echo "編集";?></th>
 
-<table>
-    <tr>
-        <td>commenter</td>
-        <td>body</td>
-    </tr>
-    <?php foreach ( $subject['Comment'] as $comment ): ?>
-    <tr>
-        <td>
-            <?php echo h($comment['commenter']); ?>
-
-            <?php echo h($comment['id']); ?>
-
-            <?php
+  </tr>
+</thead>
+<tbody>
+<?php foreach( $subject['Comment'] as $comment ):?>
+  <tr>
+    <td><?php echo h($comment['commenter']) ?></td>
+    <td><?php echo h($comment['body']) ?></td>
+    <td><?php
                 echo $this->Form->postLink('delete' ,
                                            array('controller' => 'comments' , 'action' => 'delete' , $comment['subject_id'],$comment['id'] ),
                                            array('confirm' => 'Are you sure?')
                                             );
             ?>
-        </td>
-        <td>
-                <?php echo h($comment['body']); ?>
-        </td>
-
-    </tr>
-    <?php endforeach; ?>
+    </td>
+  </tr>
+<?php endforeach?>
+</tbody>
 </table>
 
-<h2>Add Comment</h2>
-<?php
-echo $this->Form->create('Comment',array('action' => 'add'));
-echo $this->Form->input('commenter');
-echo $this->Form->input('body',array('rows' => 3));
-echo $this->Form->input('Comment.subject_id' , array('type'=>'hidden', 'value'=> $subject['Subject']['id']));
-echo $this->Form->end('Comment',array('action' => 'add'));
-?>
+</div>
+</div>
+</div>
+
+
+
+<div class="container">
+
+<div class="row">
+<div class="col-md-8 col-md-offset-2">
+
+
+<?php echo $this->Form->create('Comment', array(
+  'action' => 'add',
+  'inputDefaults' => array(
+    'div' => 'form-group',
+    'wrapInput' => false,
+    'class' => 'form-control'
+  ),
+  'class' => 'well'
+)); ?>
+  <fieldset>
+    <legend>Add Comment</legend>
+    <?php echo $this->Form->input('commenter', array(
+      'label' => 'commenter',
+      'placeholder' => 'Type something…',
+      'after' => '<span class="help-block">Example block-level help text here.</span>'
+    )); ?>
+    <?php echo $this->Form->input('body', array(
+      'label' => 'body',
+      'rows' => '3',
+      'placeholder' => 'Type something…',
+      'after' => '<span class="help-block">Example block-level help text here.</span>'
+    )); ?>
+    <?php echo $this->Form->input('Comment.subject_id', array(
+      'type'=>'hidden', 'value'=> $subject['Subject']['id']
+    )); ?>
+
+  </fieldset>
+<?php echo $this->Form->end('Comment',array('action' => 'add')); ?>
+
+</div>
+</div>
+</div>
