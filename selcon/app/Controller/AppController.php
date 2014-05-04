@@ -38,9 +38,10 @@ class AppController extends Controller {
     //public $components = array('Auth');
 
     public function beforeFilter(){
-        $this->Auth->allow();
+        //$this->Auth->allow();
         $this->set('user', $this->Auth->user());
         $this->layout = 'main'; //レイアウトを指定
+
     }
 
     public $components = array(

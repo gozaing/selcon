@@ -1,6 +1,9 @@
 <!-- File: /app/View/Posts/index.ctp -->
-<h1>Subject</h1>
 
+
+<div class="container" >
+<h2>Subject</h2>
+<?php echo $this->Paginator->pagination(array('ul' => 'pagination')); ?>
 <?php
 echo $this->Html->Link(
        'Add Subject',
@@ -9,26 +12,25 @@ echo $this->Html->Link(
        );
 ?>
 
-<table>
-    <tr>
-        <th>Id</th>
-        <th>Title</th>
-        <th>Created</th>
-    </tr>
+<table class="table table-striped table-bordered table-hover">
+<thead style="background-color: #b7e5d6;">
+  <tr>
+    <th><?php echo $this->Paginator->sort('title', 'タイトル');?></th>
+    <th><?php echo $this->Paginator->sort('body', '詳細');?></th>
+    <th><?php echo $this->Paginator->sort('created', '作成日');?></th>
+    <th><?php echo "編集"; ?></th>
 
-    <!-- ここから、$posts配列をループして、投稿記事の情報を表示 -->
-    <?php //echo var_dump($Subjects); ?>
-
-    <?php foreach ($Subjects as $subject): ?>
-    <tr>
-        <td><?php echo $subject['Subject']['id']; ?></td>
-        <td>
-            <?php echo $this->Html->link($subject['Subject']['title'], array('controller' => 'subjects',
+  </tr>
+</thead>
+<tbody>
+<?php foreach($Subjects as $subject):?>
+  <tr>
+    <th><?php echo $this->Html->link($subject['Subject']['title'], array('controller' => 'subjects',
                                 'action' => 'view',
-                                $subject['Subject']['id'])); ?>
-        </td>
-        <td>
-            <?php
+                                $subject['Subject']['id'])); ?></th>
+    <td><?php echo h($subject['Subject']['body']) ?></td>
+    <td><?php echo h($subject['Subject']['created'])?></td>
+    <td>            <?php
                 echo $this->Html->link('Edit',array('controller' => 'subjects',
                                                     'action' => 'edit',
                                                     $subject['Subject']['id']));
@@ -39,10 +41,13 @@ echo $this->Html->Link(
                                            array('confirm' => 'Are you sure?')
                                         );
             ?>
-        </td>
-
-
-        <td><?php echo $subject['Subject']['created']; ?></td>
-    </tr>
-    <?php endforeach; ?>
+    </td>
+  </tr>
+<?php endforeach?>
+</tbody>
 </table>
+<?php echo $this->Paginator->pager(array(
+  'prev' => __('前へ'),
+  'next' => __('次へ')
+)); ?>
+</div>
