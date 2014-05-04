@@ -4,7 +4,7 @@ App::uses('AppController', 'Controller');
 class UsersController extends AppController {
 
   //読み込むコンポーネントの指定
-  public $components = array('Session', 'Auth');
+  public $components = array('Session');
 
 
   //どのアクションが呼ばれてもはじめに実行される関数

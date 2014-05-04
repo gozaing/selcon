@@ -1,13 +1,28 @@
 <?php
 class SubjectsController extends AppController {
     public $helpers = array('Html', 'Form', 'Session');
-    public $components = array('Session');
+     public $components = array(
+         'Session',
+         'Auth');
+
+
+    public $name = 'Subjects';
 
     public function index () {
-        $this->set('Subjects', $this->Subject->find('all',array(
-                                                    'conditions' => 'user_id ='.$this->Auth->user('id')
-                                                    )));
+        // $this->set('Subjects', $this->Subject->find('all',array(
+        //                                             'conditions' => 'user_id ='.$this->Auth->user('id')
+        //                                             )));
+
+        $this->paginate = array(
+            'order' => array('id' => 'desc'),
+            'limit' => 5,
+            'conditions' => 'user_id ='.$this->Auth->user('id')
+            );
+
+        $this->set('Subjects', $this->paginate());
+
         $this->set('title_for_layout' , 'ストーリー');
+
     }
 
     public function view($id = null) {
