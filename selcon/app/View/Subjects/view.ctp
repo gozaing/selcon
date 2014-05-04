@@ -28,6 +28,7 @@ echo $this->Html->Link(
     <tr>
         <td>
             <?php echo h($comment['commenter']); ?>
+
             <?php echo h($comment['id']); ?>
 
             <?php
@@ -38,7 +39,7 @@ echo $this->Html->Link(
             ?>
         </td>
         <td>
-            <?php echo h($comment['body']); ?>
+                <?php echo h($comment['body']); ?>
         </td>
 
     </tr>
