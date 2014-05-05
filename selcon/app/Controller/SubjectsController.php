@@ -34,6 +34,13 @@ class SubjectsController extends AppController {
             throw new NotFoundException();
         }
         $this->set('subject',$subject);
+
+        $key_array = array('1', '2', '3');
+        $val_array = array('相談者', '回答者', 'test');
+        $options = array_combine ($key_array, $val_array);
+        $this->set('options', $options);
+
+
     }
 
     public function add() {

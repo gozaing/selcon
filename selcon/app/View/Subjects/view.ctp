@@ -1,4 +1,6 @@
 
+<?php echo $this->Html->css('box'); ?>
+
 <div class="container">
 
 <div class="row">
@@ -29,7 +31,7 @@ echo $this->Html->Link(
 <tbody>
 <?php foreach( $subject['Comment'] as $comment ):?>
   <tr>
-    <td><?php echo h($comment['commenter']) ?></td>
+    <td><?php echo h($options[$comment['commenter']]) ?></td>
     <td><?php echo nl2br($comment['body']) ?></td>
     <td><?php
                 echo $this->Form->postLink('delete' ,
@@ -66,12 +68,21 @@ echo $this->Html->Link(
 )); ?>
   <fieldset>
     <legend>Add Comment</legend>
-    <?php echo $this->Form->input('commenter', array(
+
+    <?php
+echo $this->Form->input('commenter', array(
+  'div'=>false,
+  'label'=>false,
+  'options'=>$options));
+?>
+
+
+<!--     <?php echo $this->Form->input('commenter', array(
       'label' => 'commenter',
       'placeholder' => 'Type something…',
       'after' => '<span class="help-block">Example block-level help text here.</span>'
     )); ?>
-    <?php echo $this->Form->input('body', array(
+ -->    <?php echo $this->Form->input('body', array(
       'label' => 'body',
       'rows' => '3',
       'placeholder' => 'Type something…',
@@ -83,6 +94,72 @@ echo $this->Html->Link(
 
   </fieldset>
 <?php echo $this->Form->end('Comment',array('action' => 'add')); ?>
+
+</div>
+</div>
+</div>
+
+
+<div class="container">
+
+<div class="row">
+<div class="col-md-8 col-md-offset-2">
+
+<div class="wrapper">
+    <div class="box-A">
+        ここにメッセージを。aaaaaaaaaaaa
+        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+        kkkkkkkkkkkkkkkkk
+    </div>
+</div>
+<div class="wrapper">
+    <div class="box-B">
+        <div class="aaa">
+        ここにメッセージを。aaaaaaaaaaaa
+        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+        kkkkkkkkkkkkkkkkk
+        </div>
+    </div>
+</div>
+<div class="wrapper">
+    <div class="box-A">
+        ここにメッセージを。aaaaaaaaaaaa
+        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+        kkkkkkkkkkkkkkkkk
+    </div>
+</div>
+<div class="wrapper">
+    <div class="box-B">
+        <div class="aaa">
+        ここにメッセージを。aaaaaaaaaaaa
+        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+        kkkkkkkkkkkkkkkkk
+        </div>
+    </div>
+</div>
+<div class="wrapper">
+    <div class="box-A">
+        ここにメッセージを。aaaaaaaaaaaa
+        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+        kkkkkkkkkkkkkkkkk
+    </div>
+</div>
+<div class="wrapper">
+    <div class="box-B">
+        <div class="aaa">
+        ここにメッセージを。aaaaaaaaaaaa
+        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+        kkkkkkkkkkkkkkkkk
+        </div>
+    </div>
+</div>
+
+<?php
+echo $this->form->input('Model.field', array(
+  'div'=>false,
+  'label'=>false,
+  'options'=>$options));
+?>
 
 </div>
 </div>
