@@ -18,6 +18,9 @@
 </head>
 <body>
 
+
+<!-- header -->
+
 <?php
 if (AuthComponent::user()):
   // The user is logged in, show the logout link
