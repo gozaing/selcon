@@ -25,7 +25,6 @@ echo $this->Html->Link(
     <th><?php echo "Commenter";?></th>
     <th><?php echo "Body";?></th>
     <th><?php echo "編集";?></th>
-
   </tr>
 </thead>
 <tbody>
@@ -105,61 +104,30 @@ echo $this->Form->input('commenter', array(
 <div class="row">
 <div class="col-md-8 col-md-offset-2">
 
-<div class="wrapper">
-    <div class="box-A">
-        ここにメッセージを。aaaaaaaaaaaa
-        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-        kkkkkkkkkkkkkkkkk
-    </div>
-</div>
-<div class="wrapper">
-    <div class="box-B">
-        <div class="aaa">
-        ここにメッセージを。aaaaaaaaaaaa
-        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-        kkkkkkkkkkkkkkkkk
-        </div>
-    </div>
-</div>
-<div class="wrapper">
-    <div class="box-A">
-        ここにメッセージを。aaaaaaaaaaaa
-        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-        kkkkkkkkkkkkkkkkk
-    </div>
-</div>
-<div class="wrapper">
-    <div class="box-B">
-        <div class="aaa">
-        ここにメッセージを。aaaaaaaaaaaa
-        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-        kkkkkkkkkkkkkkkkk
-        </div>
-    </div>
-</div>
-<div class="wrapper">
-    <div class="box-A">
-        ここにメッセージを。aaaaaaaaaaaa
-        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-        kkkkkkkkkkkkkkkkk
-    </div>
-</div>
-<div class="wrapper">
-    <div class="box-B">
-        <div class="aaa">
-        ここにメッセージを。aaaaaaaaaaaa
-        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-        kkkkkkkkkkkkkkkkk
-        </div>
-    </div>
-</div>
 
-<?php
-echo $this->form->input('Model.field', array(
-  'div'=>false,
-  'label'=>false,
-  'options'=>$options));
-?>
+<?php foreach( $subject['Comment'] as $comment ):?>
+    <div class="wrapper">
+
+        <?php
+        if ( $comment['commenter'] == "1" ):
+            echo "<div class='box-A'>";
+        else :
+            echo "<div class='box-B'>";
+        endif;
+        ?>
+            <?php echo h($options[$comment['commenter']]) ?>
+            <?php echo nl2br($comment['body']) ?>
+            <?php
+                echo $this->Form->postLink('delete' ,
+                                           array('controller' => 'comments' , 'action' => 'delete' , $comment['subject_id'],$comment['id'] ),
+                                           array('confirm' => 'Are you sure?')
+                                            );
+            ?>
+        </div>
+    </div>
+<?php endforeach?>
+
+
 
 </div>
 </div>
