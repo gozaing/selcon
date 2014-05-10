@@ -1,5 +1,5 @@
 
-<div class="container">
+<div class="container" style="padding-top: 60px;">
 
 <div class="row">
 <div class="col-md-8 col-md-offset-2">
