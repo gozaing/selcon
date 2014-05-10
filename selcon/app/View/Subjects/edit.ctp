@@ -1,3 +1,21 @@
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <ul class="nav pull-right">
+        <?php
+          if(isset($user)):
+            echo "<li><a href='/selcon/users/logout'>ログアウト</a></li>";
+          else:
+            echo "<li><a href='register'>新規登録</a></li>";
+          endif;
+        ?>
+      </ul>
+      <ul class="nav pull-right">
+        <li><a href="#">準備中</a></li>
+      </ul>
+    </div>
+   </div>
+</div>
 
 <div class="container" style="padding-top: 60px;">
 
