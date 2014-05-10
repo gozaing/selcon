@@ -1,6 +1,7 @@
 <!-- File: /app/View/Posts/index.ctp -->
 <div class="navbar navbar-inverse navbar-fixed-top">
   <div class="navbar-inner">
+    <a class="navbar-brand" href="#">SelCon</a>
     <div class="container">
       <ul class="nav pull-right">
         <?php
