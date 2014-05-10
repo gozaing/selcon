@@ -24,37 +24,24 @@ if (AuthComponent::user()):
 endif;
 ?>
 
-<!-- <nav class="nab pull-right">
-<a>HOME</a>
-<a>AAA</a>
-</nav>
-
-<style>
-.globNav-row{
- display: table;
- width: 100%;
-}
-
-.globNav-row > a{
- display: table-cell;
- vertical-align: middle;
- text-align: center;
-}
-</style>
- -->
-
-<!-- <div class="navber navbar-fixed-top">
+<div class="navbar navbar-inverse navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container">
-      <ul class="nav">
-        <li><a href="#">最新のエントリー</a></li>
+      <ul class="nav pull-right">
+        <?php
+          if(isset($user)):
+            echo "<li><a href='logout'>ログアウト</a></li>";
+          else:
+            echo "<li><a href='register'>新規登録</a></li>";
+          endif;
+        ?>
+      </ul>
+      <ul class="nav pull-right">
+        <li><a href="#">準備中</a></li>
       </ul>
     </div>
    </div>
- </div>
- -->
-<!-- header -->
-
+</div>
 
 
 <?php echo $this->fetch('content'); ?>

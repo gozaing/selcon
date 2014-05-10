@@ -1,7 +1,7 @@
 <!-- File: /app/View/Posts/index.ctp -->
 
 
-<div class="container" >
+<div class="container"  style="padding-top: 60px;">
 <h2>Subject</h2>
 
 

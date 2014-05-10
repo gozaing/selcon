@@ -1,5 +1,5 @@
 
-<div class="navbar navbar-inverse navbar-fixed-top">
+<!-- <div class="navbar navbar-inverse navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container">
       <ul class="nav pull-right">
@@ -17,7 +17,7 @@
     </div>
    </div>
 </div>
-
+ -->
 
 <div class="container" style="padding-top: 60px;">
 <div class="row">
