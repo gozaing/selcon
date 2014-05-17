@@ -7,48 +7,21 @@
    position: relative;
 }
 
-.box-A {
+.box-B {
    position: relative;
    background: #BDF3EA;
    height: 70px;
-   /*width: 500px;*/
-   /*margin-bottom: 20px;*/
    border-radius: 20px;
    padding:8px;
    margin-right: -20px;
    margin-left: 20px;
 }
-.box-B {
+.box-A {
    position: relative;
    background: #BEFACF;
    height: 70px;
-   /*width: 500px;*/
-   /*margin-bottom: 20px;*/
    border-radius: 20px;
    padding: 8px;
    margin-right: 20px;
    margin-left: -20px;
 }
-
-/*.box:before {
-    content: '';
-    position: absolute;
-    background: #ccc;
-    height: 20px;
-    width: 20px;
-    border-radius: 10px;
-    bottom: -20px;
-    left: 70px;
-}
-
-.box:after {
-    content: '';
-    position: absolute;
-    background: #ccc;
-    height: 10px;
-    width: 10px;
-    border-radius: 5px;
-    bottom: -30px;
-    left: 90px;
-}
-*/
