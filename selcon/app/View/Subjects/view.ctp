@@ -88,7 +88,8 @@ echo $this->Html->Link(
     'wrapInput' => false,
     'class' => 'form-control'
   ),
-  'class' => 'well'
+  'class' => 'well',
+  'novalidate' => true,
 )); ?>
   <fieldset>
     <legend>Add Comment</legend>
@@ -102,17 +103,15 @@ echo $this->Html->Link(
 ?>
 
 
-<!--     <?php echo $this->Form->input('commenter', array(
-      'label' => 'talker',
-      'placeholder' => '',
-      'after' => '<span class="help-block"></span>'
-    )); ?>
- -->    <?php echo $this->Form->input('body', array(
-      'label' => 'Comment',
-      'rows' => '3',
-      'placeholder' => 'enter comment',
-      'after' => '<span class="help-block"></span>'
-    )); ?>
+    <?php echo $this->Form->input('body', array(
+        'label' => 'Comment',
+        'rows' => '3',
+        'placeholder' => 'enter comment',
+        'after' => '<span class="help-block"></span>',
+        //'required' => FALSE,
+      )
+
+    ); ?>
     <?php echo $this->Form->input('Comment.subject_id', array(
       'type'=>'hidden', 'value'=> $subject['Subject']['id']
     )); ?>

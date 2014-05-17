@@ -8,6 +8,18 @@ class SubjectsController extends AppController {
 
     public $name = 'Subjects';
 
+    public function beforeFilter(){
+         parent::beforeFilter();
+        if($this->Session->read('errors')){
+            foreach($this->Session->read('errors') as $model => $errors){
+                $this->loadModel($model);
+                $this->$model->validationErrors = $errors;
+            }
+            $this->Session->delete('errors');  //表示は遷移・リロードまでの1回っきりなので消す
+        }
+    }
+
+
     public function index () {
         // $this->set('Subjects', $this->Subject->find('all',array(
         //                                             'conditions' => 'user_id ='.$this->Auth->user('id')
