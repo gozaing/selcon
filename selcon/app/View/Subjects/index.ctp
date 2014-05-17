@@ -6,41 +6,44 @@
       <ul class="nav pull-right">
         <?php
           if(isset($user)):
-            echo "<li><a href='/selcon/users/logout'>ログアウト</a></li>";
+            echo "<li><a href='/selcon/users/logout'>LogOut</a></li>";
           else:
-            echo "<li><a href='register'>新規登録</a></li>";
+            echo "<li><a href='register'>NewAccount</a></li>";
           endif;
         ?>
       </ul>
       <ul class="nav pull-right">
-        <li><a href="#">準備中</a></li>
+        <li><a href="#">Coming Soon</a></li>
       </ul>
     </div>
    </div>
 </div>
 
 <div class="container"  style="padding-top: 60px;">
-<h2>Subject</h2>
+<h2>Talk</h2>
 
 
 <?php echo $this->Paginator->pagination(array('ul' => 'pagination')); ?>
 
 
+<div>
 <?php
+
 echo $this->Html->Link(
-       'Add Subject',
+       'Add Talk',
        array('controller' => 'subjects',
              'action' => 'add')
        );
 ?>
+</div>
 
 <table class="table table-striped table-bordered table-hover">
 <thead style="background-color: #b7e5d6;">
   <tr>
-    <th><?php echo $this->Paginator->sort('title', 'タイトル');?></th>
-    <th><?php echo $this->Paginator->sort('body', '詳細');?></th>
-    <th><?php echo $this->Paginator->sort('created', '作成日');?></th>
-    <th><?php echo "編集"; ?></th>
+    <th><?php echo "Talk"; ?></th>
+    <th><?php echo "TalkMemo"; ?></th>
+    <th><?php echo "Create"; ?></th>
+    <th><?php echo "Modify"; ?></th>
 
   </tr>
 </thead>
@@ -69,7 +72,7 @@ echo $this->Html->Link(
 </tbody>
 </table>
 <?php echo $this->Paginator->pager(array(
-  'prev' => __('前へ'),
-  'next' => __('次へ')
+  'prev' => __('prev'),
+  'next' => __('next')
 )); ?>
 </div>

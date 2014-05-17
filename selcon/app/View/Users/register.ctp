@@ -5,14 +5,14 @@
       <ul class="nav pull-right">
         <?php
           if(isset($user)):
-            echo "<li><a href='logout'>ログアウト</a></li>";
+            echo "<li><a href='logout'>LogOut</a></li>";
           else:
-            echo "<li><a href='register'>新規登録</a></li>";
+            echo "<li><a href='register'>NewAccount</a></li>";
           endif;
         ?>
       </ul>
       <ul class="nav pull-right">
-        <li><a href="#">準備中</a></li>
+        <li><a href="#">Coming Soon</a></li>
       </ul>
     </div>
    </div>
@@ -33,16 +33,16 @@
   'class' => 'well'
 )); ?>
   <fieldset>
-    <legend>New Account</legend>
+    <legend>NewAccount</legend>
     <?php echo $this->Form->input('username', array(
-      'label' => 'Username',
-      'placeholder' => 'Type something…',
-      'after' => '<span class="help-block">Example block-level help text here.</span>'
+      'label' => 'Name',
+      'placeholder' => 'enter name',
+      'after' => '<span class="help-block"></span>'
     )); ?>
     <?php echo $this->Form->input('password', array(
       'label' => 'Password',
-      'placeholder' => 'Type something…',
-      'after' => '<span class="help-block">Example block-level help text here.</span>'
+      'placeholder' => 'enter password',
+      'after' => '<span class="help-block"></span>'
     )); ?>
     <?php echo $this->Form->submit('Submit', array(
       'div' => false,

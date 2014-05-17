@@ -5,14 +5,14 @@
       <ul class="nav pull-right">
         <?php
           if(isset($user)):
-            echo "<li><a href='/selcon/users/logout'>ログアウト</a></li>";
+            echo "<li><a href='/selcon/users/logout'>LogOut</a></li>";
           else:
-            echo "<li><a href='register'>新規登録</a></li>";
+            echo "<li><a href='register'>NewAccount</a></li>";
           endif;
         ?>
       </ul>
       <ul class="nav pull-right">
-        <li><a href="#">準備中</a></li>
+        <li><a href="#">Coming Soon</a></li>
       </ul>
     </div>
    </div>
@@ -33,19 +33,19 @@
   'class' => 'well'
 )); ?>
   <fieldset>
-    <legend>Add Subject</legend>
+    <legend>Add Talk</legend>
     <?php echo $this->Form->input('title', array(
-      'label' => 'title',
-      'placeholder' => 'Type something…',
-      'after' => '<span class="help-block">Example block-level help text here.</span>'
+      'label' => 'Talk',
+      'placeholder' => 'enter talk',
+      'after' => '<span class="help-block"></span>'
     )); ?>
     <?php echo $this->Form->input('body', array(
-      'label' => 'body',
-      'placeholder' => 'Type something…',
-      'after' => '<span class="help-block">Example block-level help text here.</span>',
+      'label' => 'TalkMemo',
+      'placeholder' => 'enter talkmemo',
+      'after' => '<span class="help-block"></span>',
       'rows' => '3'
     )); ?>
-    <?php echo $this->Form->submit('Submit', array(
+    <?php echo $this->Form->submit('Add', array(
       'div' => false,
       'class' => 'btn btn-default'
     )); ?>
