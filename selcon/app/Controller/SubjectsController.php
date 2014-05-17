@@ -36,7 +36,7 @@ class SubjectsController extends AppController {
         $this->set('subject',$subject);
 
         $key_array = array('1', '2');
-        $val_array = array('A', 'B',);
+        $val_array = array('( A )', '( B )',);
         $options = array_combine ($key_array, $val_array);
         $this->set('options', $options);
 
