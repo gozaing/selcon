@@ -8,13 +8,12 @@ class Comment extends AppModel {
     'body' => array(
           array(
             'rule' => 'notEmpty', //重複禁止
-            'message' => 'empty!-!'
+            'message' => 'Commentを入力して下さい'
           )
     ),
     'commenter' => array(
           array(
-            'rule' => 'notEmpty',
-            'message' => 'empty!!!'
+            'rule' => 'notEmpty'
           )
     )
     );

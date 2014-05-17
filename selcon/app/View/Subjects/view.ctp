@@ -102,16 +102,15 @@ echo $this->Html->Link(
                                             );
 ?>
 
-
     <?php echo $this->Form->input('body', array(
         'label' => 'Comment',
         'rows' => '3',
         'placeholder' => 'enter comment',
-        'after' => '<span class="help-block"></span>',
-        //'required' => FALSE,
+        'after' => '<span class="help-block"></span>'
       )
 
     ); ?>
+    <?php //echo $this->Form->error('Comment.body',null,array('error'=>false)) ?>
     <?php echo $this->Form->input('Comment.subject_id', array(
       'type'=>'hidden', 'value'=> $subject['Subject']['id']
     )); ?>
