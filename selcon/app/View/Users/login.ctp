@@ -33,6 +33,7 @@
   <fieldset>
     <legend>Login</legend>
     <?php echo $this->Form->input('username', array(
+      //'required'=>false,
       'label' => 'Name',
       'placeholder' => 'enter name',
       'after' => '<span class="help-block"></span>'
