@@ -1,6 +1,6 @@
 <div class="navbar navbar-inverse navbar-fixed-top">
   <div class="navbar-inner">
-    <a class="navbar-brand" href="/selcon/users/login">SelCon</a>
+    <a class="navbar-brand" href="/users/login">SelCon</a>
     <div class="container">
       <ul class="nav pull-right">
         <?php
