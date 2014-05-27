@@ -1,11 +1,11 @@
 <div class="navbar navbar-inverse navbar-fixed-top">
   <div class="navbar-inner">
-    <a class="navbar-brand" href="/selcon/subjects">SelCon</a>
+    <a class="navbar-brand" href="/subjects">SelCon</a>
     <div class="container">
       <ul class="nav pull-right">
         <?php
           if(isset($user)):
-            echo "<li><a href='/selcon/users/logout'>LogOut</a></li>";
+            echo "<li><a href='/users/logout'>LogOut</a></li>";
           else:
             echo "<li><a href='register'>NewAccount</a></li>";
           endif;

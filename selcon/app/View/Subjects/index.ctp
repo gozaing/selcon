@@ -6,7 +6,7 @@
       <ul class="nav pull-right">
         <?php
           if(isset($user)):
-            echo "<li><a href='/selcon/users/logout'>LogOut</a></li>";
+            echo "<li><a href='/users/logout'>LogOut</a></li>";
           else:
             echo "<li><a href='register'>NewAccount</a></li>";
           endif;
