@@ -27,16 +27,6 @@
   ga('send', 'pageview');
 
 </script>
-    
-<?php
-if (AuthComponent::user()):
-  // The user is logged in, show the logout link
-  echo $this->Html->link('Log out', array('controller' => 'users', 'action' => 'logout'));
-endif;
-?>
-
-
-
 
 <?php echo $this->fetch('content'); ?>
 </body>
