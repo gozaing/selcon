@@ -41,7 +41,6 @@ echo $this->Html->Link(
 <thead style="background-color: #b7e5d6;">
   <tr>
     <th><?php echo "Talk"; ?></th>
-    <th><?php echo "TalkMemo"; ?></th>
     <th><?php echo "Modify"; ?></th>
 
   </tr>
@@ -52,7 +51,6 @@ echo $this->Html->Link(
     <th><?php echo $this->Html->link($subject['Subject']['title'], array('controller' => 'subjects',
                                 'action' => 'view',
                                 $subject['Subject']['id'])); ?></th>
-    <td><?php echo nl2br($subject['Subject']['body']) ?></td>
     <td>            <?php
                 echo $this->Html->link('Edit',array('controller' => 'subjects',
                                                     'action' => 'edit',
