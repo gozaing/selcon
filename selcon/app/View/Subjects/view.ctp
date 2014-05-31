@@ -26,16 +26,6 @@
 <div class="row">
 <div class="col-md-8 col-md-offset-2">
 
-<div>
-<?php
-echo $this->Html->Link(
-       'Back to Talk List',
-       array('controller' => 'subjects',
-             'action' => 'index')
-       );
-?>
-</div>
-
 <h2><?php echo h($subject['Subject']['title']); ?></h2>
 <p><?php echo h($subject['Subject']['body']); ?></p>
 

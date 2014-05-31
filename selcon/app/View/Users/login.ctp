@@ -11,9 +11,6 @@
           endif;
         ?>
       </ul>
-      <ul class="nav pull-right">
-        <li><a href="#">Coming Soon</a></li>
-      </ul>
     </div>
    </div>
 </div>
