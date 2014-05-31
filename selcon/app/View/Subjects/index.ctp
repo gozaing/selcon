@@ -42,7 +42,6 @@ echo $this->Html->Link(
   <tr>
     <th><?php echo "Talk"; ?></th>
     <th><?php echo "TalkMemo"; ?></th>
-    <th><?php echo "Create"; ?></th>
     <th><?php echo "Modify"; ?></th>
 
   </tr>
@@ -54,7 +53,6 @@ echo $this->Html->Link(
                                 'action' => 'view',
                                 $subject['Subject']['id'])); ?></th>
     <td><?php echo nl2br($subject['Subject']['body']) ?></td>
-    <td><?php echo h($subject['Subject']['created'])?></td>
     <td>            <?php
                 echo $this->Html->link('Edit',array('controller' => 'subjects',
                                                     'action' => 'edit',

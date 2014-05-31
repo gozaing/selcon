@@ -10,7 +10,7 @@
 .box-B {
    position: relative;
    background: #BDF3EA;
-   height: 70px;
+   height: auto;
    border-radius: 20px;
    padding:8px;
    margin-right: -20px;
@@ -19,7 +19,7 @@
 .box-A {
    position: relative;
    background: #BEFACF;
-   height: 70px;
+   height: auto;
    border-radius: 20px;
    padding: 8px;
    margin-right: 20px;
