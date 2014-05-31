@@ -85,11 +85,19 @@
     <legend>Add Comment</legend>
 
 <?php
-  echo $this->Form->input('commenter', array(
-                                            'div'=>true,
-                                            'label'=>'talker',
-                                            'options'=>$options)
-                                            );
+  // echo $this->Form->input('commenter', array(
+  //                                           'legend'=>false,
+  //                                           'type'=>'radio',
+  //                                           'options'=>$options,
+  //                                           'div' => 'radio-horizontal',
+  //                                           'style' => 'float:none;'
+  //                                           )
+  //                         );
+?>
+<?php
+$options = array('1' => '(A)', '2' => '(B)');
+$attributes = array('legend' => false);
+echo $this->Form->radio('gender', $options, $attributes);
 ?>
 
     <?php echo $this->Form->input('body', array(
