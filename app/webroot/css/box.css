@@ -1,0 +1,31 @@
+* {
+    box-sizing: border-box;
+}
+
+.wrapper {
+   padding: 10px;
+   position: relative;
+}
+
+.box-B {
+   position: relative;
+   background: #BDF3EA;
+   height: auto;
+   border-radius: 20px;
+   padding:8px;
+   margin-right: -20px;
+   margin-left: 20px;
+}
+.box-A {
+   position: relative;
+   background: #BEFACF;
+   height: auto;
+   border-radius: 20px;
+   padding: 8px;
+   margin-right: 20px;
+   margin-left: -20px;
+}
+
+.error-message {
+color:#b94a48;
+}
