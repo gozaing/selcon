@@ -9,7 +9,7 @@
 </script>
 
 
-<div class="navbar navbar-inverse navbar-fixed-top">
+<div class="navbar navbar-inverse">
   <div class="navbar-inner">
     <a class="navbar-brand" href="/subjects">SelCon</a>
     <div class="container">
