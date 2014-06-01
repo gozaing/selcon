@@ -5,7 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
+<?php
+echo $this->Html->meta(
+    'favicon.ico',
+    'favicon.ico',
+    array('type' => 'icon')
+);
+?>
+
 <link rel="shortcut icon" href="favicon.ico">
+
 <title>selconotw</title>
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->

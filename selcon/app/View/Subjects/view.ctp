@@ -95,7 +95,6 @@
   //                         );
 ?>
 <?php
-//$options = array('1' => '(A)', '2' => '(B)');
 $attributes = array('legend' => false,'value'=>'1');
 echo $this->Form->radio('commenter', $options, $attributes);
 ?>
