@@ -1,6 +1,14 @@
 
 <?php echo $this->Html->css('box'); ?>
 
+<script type="text/javascript">
+        window.onload = function(){
+          // ページ読み込み時に最下部まで移動
+          window.scroll(0,document.body.scrollHeight);
+        }
+</script>
+
+
 <div class="navbar navbar-inverse navbar-fixed-top">
   <div class="navbar-inner">
     <a class="navbar-brand" href="/subjects">SelCon</a>
@@ -95,6 +103,7 @@
   //                         );
 ?>
 <?php
+//$options = array('1' => '(A)', '2' => '(B)');
 $attributes = array('legend' => false,'value'=>'1');
 echo $this->Form->radio('commenter', $options, $attributes);
 ?>
