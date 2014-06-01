@@ -11,7 +11,15 @@ echo $this->Html->meta(
     'favicon.ico',
     array('type' => 'icon')
 );
+echo $this->Html->meta(
+   array(
+    'rel' => 'apple-touch-icon-precomposed',
+    'sizes' => '16x16',
+    'link' => 'apple-touch-icon.png',
+));
 ?>
+
+
 
 <link rel="shortcut icon" href="favicon.ico">
 
