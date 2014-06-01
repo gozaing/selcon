@@ -1,0 +1,19 @@
+#container {
+  width: 800px;
+  margin: 0 auto;
+}
+
+#header:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+#header_menu{
+  float: right;
+}
+
+.error-message {
+background-color:#a90329;
+color:#fff;
+}
