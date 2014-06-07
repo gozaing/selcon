@@ -46,7 +46,7 @@
 
 
 <?php foreach( $subject['Comment'] as $comment ):?>
-    <div class="wrapper">
+    <div class="wrapper" id="comment_<?php echo h($comment['id']); ?>" >
 
         <?php
         if ( $comment['commenter'] == "1" ):
@@ -57,12 +57,16 @@
         ?>
             <?php echo h($options[$comment['commenter']]) ?>
             <?php echo nl2br($comment['body']) ?>
-            <?php
-                echo $this->Form->postLink('delete' ,
-                                           array('controller' => 'comments' , 'action' => 'delete' , $comment['subject_id'],$comment['id'] ),
-                                           array('confirm' => 'Are you sure?')
-                                            );
+            <?php 
+                echo $this->Html->link('delete-ajax',
+                                       '#',
+                                       array('class'=>'delete',
+                                             'data-subject-id' => $comment['subject_id'],
+                                             'data-comment-id' => $comment['id']
+                                             )
+                                       );
             ?>
+
         </div>
     </div>
 <?php endforeach?>
@@ -127,3 +131,16 @@ echo $this->Form->radio('commenter', $options, $attributes);
 </div>
 </div>
 </div>
+
+<script>
+$(function(){
+  $('a.delete').click(function(e){
+    if(confirm('Are You Sure Delete Comment ?')) {
+      $.post('/comments/delete/'+$(this).data('subject-id')+'/'+$(this).data('comment-id'),{},function(res) {
+        $('#comment_'+res.id).fadeOut();
+      }, "json");
+    }
+    return false;
+  });
+});
+</script>

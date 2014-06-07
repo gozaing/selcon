@@ -47,12 +47,20 @@ class CommentsController extends AppController {
         if ($this->request->is('get')){
             throw new notFoundException();
         }
-        $this->Comment->delete($id);
-        $this->Session->setFlash(__('the comment with id:%s has been deleted',h($id)));
-        //return $this->redirect(array('controller' => 'subjects','action' => 'index'));
-        return $this->redirect(array('controller' => 'subjects' ,'action' => 'view' , $subjectid));
-        //return $this->redirect(array('controller' => 'subjects' ,'action' => 'view' ,1));
 
+        if ($this->request->is('ajax')) {
+            if ($this->Comment->delete($id)) {
+                $this->log('comment-delete-ajax-id->' . $id , 'debug');
+                $this->autoRender = false;
+                $this->autoLayout = false;
+                $response = array('id'=>$id);
+                $this->header('Content-Type: application/json');
+                echo json_encode($response);
+                exit();
+            }
+        }
+
+        $this->redirect(array('controller' => 'subjects' , 'action' => 'view' , $subjectid ));
 
     }
 
