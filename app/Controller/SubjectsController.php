@@ -21,6 +21,7 @@ class SubjectsController extends AppController {
 
 
     public function index () {
+        $this->log('index-start', 'debug');
         // $this->set('Subjects', $this->Subject->find('all',array(
         //                                             'conditions' => 'user_id ='.$this->Auth->user('id')
         //                                             )));
@@ -100,13 +101,28 @@ class SubjectsController extends AppController {
 
 //delete
     public function delete($id = null){
+        
+        $this->log('delete-start-id->' .$id ,'debug');
+
         if ($this->request->is('get')){
             throw new notFoundException();
         }
-        $this->Subject->delete($id);
-        $this->Session->setFlash(__('the postAA with id:%s has been deleted',h($id)));
-        return $this->redirect(array('action' => 'index'));
+        if ($this->request->is('ajax')){
+            $this->log('ajax-start','debug');
 
+            if ( $this->Subject->delete($id)) {
+
+                $this->log('ajax-delete-success' , 'debug');
+
+                $this->autoRender = false;
+                $this->autoLayout = false;
+                $response = array('id' => $id);
+                $this->header('Content-Type: application/json');
+                echo json_encode($response);
+                exit();
+            }            
+        }
+        $this->redirect(array('action' => 'index'));
     }
 
 }

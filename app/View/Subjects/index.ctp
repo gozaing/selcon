@@ -47,7 +47,7 @@ echo $this->Html->Link(
 </thead>
 <tbody>
 <?php foreach($Subjects as $subject):?>
-  <tr>
+  <tr id="subject_<?php echo h($subject['Subject']['id']); ?>">
     <th><?php echo $this->Html->link($subject['Subject']['title'], array('controller' => 'subjects',
                                 'action' => 'view',
                                 $subject['Subject']['id'])); ?></th>
@@ -56,12 +56,15 @@ echo $this->Html->Link(
                                                     'action' => 'edit',
                                                     $subject['Subject']['id']));
             ?>
-            <?php
-                echo $this->Form->postLink('delete' ,
-                                           array('action' => 'delete' , $subject['Subject']['id']),
-                                           array('confirm' => 'Are you sure?')
-                                        );
+            <?php 
+                echo $this->Html->link('delete' 
+                                       ,'#'
+                                       ,array('class'=>'delete',
+                                              'data-subject-id'=>$subject['Subject']['id'] 
+                                              )
+                                      );
             ?>
+
     </td>
   </tr>
 <?php endforeach?>
@@ -72,3 +75,16 @@ echo $this->Html->Link(
   'next' => __('next')
 )); ?>
 </div>
+
+<script>
+$(function() {
+  $('a.delete').click(function(e) {
+    if (confirm('sure?')) {
+      $.post('/subjects/delete/'+$(this).data('subject-id'),{}, function(res) {     
+        $('#subject_'+res.id).fadeOut();
+      }, "json");
+    }
+    return false;
+  });
+});
+</script>
