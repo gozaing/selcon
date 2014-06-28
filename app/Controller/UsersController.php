@@ -20,9 +20,9 @@ class UsersController extends AppController {
   //ログイン後にリダイレクトされるアクション
   public function index(){
     $this->set('user', $this->Auth->user());
-    $this->set('title_for_layout' , 'ログイン');
+    $this->set('title_for_layout' , 'LogIn');
   }
-
+ 
   public function register(){
     //$this->requestにPOSTされたデータが入っている
     //POSTメソッドかつユーザ追加が成功したら
@@ -35,18 +35,34 @@ class UsersController extends AppController {
   }
 
   public function login(){
-    $this->set('title_for_layout' , 'ログイン');
-    if($this->request->is('post')) {
-      if($this->Auth->login())
-        // return $this->redirect('index');
-        return $this->redirect(array('controller' => 'subjects' , 'action' => 'index'));
-      else
-        $this->Session->setFlash('ログイン失敗');
-    }
+    $this->set('title_for_layout' , 'LogIn');
+
+    $this->log('user-validate-start','debug');
+    if( $this->request->is('post') ) {
+
+      $this->log($this->request->data , 'debug');
+
+      $this->User->set( $this->request->data );
+
+      // validate choice
+      $this->User->validate = $this->User->validate_login;
+      if ( $this->User->validates() ) {
+        $this->log('user-validate-ok','debug');
+        if($this->Auth->login())
+          // return $this->redirect('index');
+          return $this->redirect(array('controller' => 'subjects' , 'action' => 'index'));
+        else
+          //$this->autoRender = false; // この行を追加
+          $this->log('user-login-fail','debug');
+          $this->Session->setFlash('Name or password is incorrect');
+        }
+      } else {
+        $this->log('user-validate-ng','debug');
+      } 
   }
 
   public function logout(){
-    $this->set('title_for_layout' , 'ログイン');
+    $this->set('title_for_layout' , 'LogIn');
     $this->Auth->logout();
     $this->redirect('login');
   }

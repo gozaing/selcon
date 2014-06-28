@@ -25,10 +25,11 @@
     'wrapInput' => false,
     'class' => 'form-control'
   ),
-  'class' => 'well'
+  'class' => 'well',
+  'novalidate' => true
 )); ?>
   <fieldset>
-    <legend>Login</legend>
+    <legend>LogIn</legend>
     <?php echo $this->Form->input('username', array(
       //'required'=>false,
       'label' => 'Name',
@@ -40,12 +41,14 @@
       'placeholder' => 'enter password',
       'after' => '<span class="help-block"></span>'
     )); ?>
-    <?php echo $this->Form->submit('Submit', array(
+    <?php echo $this->Form->submit('LogIn', array(
       'div' => false,
       'class' => 'btn btn-default'
     )); ?>
   </fieldset>
 <?php echo $this->Form->end(); ?>
+
+<?php echo $this->Session->flash(); ?>
 
 </div>
 </div>

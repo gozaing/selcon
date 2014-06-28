@@ -30,7 +30,8 @@
     'wrapInput' => false,
     'class' => 'form-control'
   ),
-  'class' => 'well'
+  'class' => 'well',
+  'novalidate' => true
 )); ?>
   <fieldset>
     <legend>NewAccount</legend>
