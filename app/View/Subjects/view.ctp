@@ -1,5 +1,6 @@
 
 <?php echo $this->Html->css('box'); ?>
+<?php //$this->AjaxValidation->active(); ?>
 
 <script type="text/javascript">
         window.onload = function(){
@@ -42,11 +43,11 @@
 <div class="container">
 
 <div class="row">
-<div class="col-md-8 col-md-offset-2">
+<div id="comentbody" class="col-md-8 col-md-offset-2">
 
 
 <?php foreach( $subject['Comment'] as $comment ):?>
-    <div class="wrapper">
+    <div class="wrapper" id="comment_<?php echo h($comment['id']); ?>" >
 
         <?php
         if ( $comment['commenter'] == "1" ):
@@ -57,12 +58,16 @@
         ?>
             <?php echo h($options[$comment['commenter']]) ?>
             <?php echo nl2br($comment['body']) ?>
-            <?php
-                echo $this->Form->postLink('delete' ,
-                                           array('controller' => 'comments' , 'action' => 'delete' , $comment['subject_id'],$comment['id'] ),
-                                           array('confirm' => 'Are you sure?')
-                                            );
+            <?php 
+                echo $this->Html->link('delete',
+                                       '#',
+                                       array('class'=>'delete',
+                                             'data-subject-id' => $comment['subject_id'],
+                                             'data-comment-id' => $comment['id']
+                                             )
+                                       );
             ?>
+
         </div>
     </div>
 <?php endforeach?>
@@ -78,52 +83,78 @@
 <div class="row">
 <div class="col-md-8 col-md-offset-2">
 
-
-<?php echo $this->Form->create('Comment', array(
-  'action' => 'add',
-  'inputDefaults' => array(
-    'div' => 'form-group',
-    'wrapInput' => false,
-    'class' => 'form-control'
-  ),
-  'class' => 'well',
-  'novalidate' => true,
-)); ?>
-  <fieldset>
-    <legend>Add Comment</legend>
+<fieldset>
+  <legend id='comentlabel'>Add Comment</legend>
 
 <?php
-  // echo $this->Form->input('commenter', array(
-  //                                           'legend'=>false,
-  //                                           'type'=>'radio',
-  //                                           'options'=>$options,
-  //                                           'div' => 'radio-horizontal',
-  //                                           'style' => 'float:none;'
-  //                                           )
-  //                         );
-?>
-<?php
-//$options = array('1' => '(A)', '2' => '(B)');
-$attributes = array('legend' => false,'value'=>'1');
-echo $this->Form->radio('commenter', $options, $attributes);
-?>
 
-    <?php echo $this->Form->input('body', array(
-        'label' => 'Comment',
-        'rows' => '3',
-        'placeholder' => 'enter comment',
-        'after' => '<span class="help-block"></span>'
-      )
+    $data = $this->Js->get('#CommentAddForm')->serializeForm(array('isForm' => true, 'inline' => true));
+    $this->Js->get('#CommentAddForm')->event(
+          'submit',
+          $this->Js->request(
+            array(
+                  'action' => '../comments/add'
+                  ),
+            array(
+                    'update' => '#commentStatus',
+                    'data' => $data,
+                    'async' => true,    
+                    'dataExpression'=>true,
+                    'method' => 'POST',
+                    //'success'=> "test();"
+                )
+            )
+        );
+    echo $this->Form->create('Comment', array(
+      'action' => 'add',
+      'inputDefaults' => array(
+        'div' => 'form-group',
+        'wrapInput' => false,
+        'class' => 'form-control'
+      ),
+      'class' => 'well',
+      'novalidate' => true,
+      'default' => false
+    ));
+    $attributes = array('legend' => false,'value'=>'1');
+    echo $this->Form->radio('commenter', $options, $attributes);
+    echo $this->Form->input('body', array(
+            'label' => 'Comment',
+            'rows' => '3',
+            'placeholder' => 'enter comment',
+            'after' => '<span class="help-block"></span>'
+          )
 
-    ); ?>
-    <?php //echo $this->Form->error('Comment.body',null,array('error'=>false)) ?>
-    <?php echo $this->Form->input('Comment.subject_id', array(
+        );
+    echo $this->Form->input('Comment.subject_id', array(
       'type'=>'hidden', 'value'=> $subject['Subject']['id']
-    )); ?>
+    ));
+    echo $this->Form->submit('Add Comment');
+    echo $this->Form->end();
+    echo $this->Js->writeBuffer();
 
-  </fieldset>
-<?php echo $this->Form->end('Add Comment',array('action' => 'add')); ?>
+?>
+
+</fieldset>
 
 </div>
 </div>
 </div>
+
+<div id="commentStatus">
+</div>
+
+
+<script>
+$(function(){
+  $('a.delete').click(function(e){
+    if(confirm('Are You Sure Delete Comment ?')) {
+      $.post('/comments/delete/'+$(this).data('subject-id')+'/'+$(this).data('comment-id'),{},function(res) {
+        $('#comment_'+res.id).fadeOut();
+      }, "json");
+    }
+    return false;
+  });
+});
+
+</script>
