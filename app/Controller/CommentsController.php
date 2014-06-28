@@ -46,7 +46,7 @@ class CommentsController extends AppController {
                 $this->log('lastid->'.$last_id, 'debug');
 
                 //$this->layout = "ajax";
-                $this->render('/comments/success','ajax');
+                $this->render('/Comments/success','ajax');
                 //$this->render('ajax');
                 // success
                 //$this->Session->setFlash(__('Your Comment has been saveed!'));
@@ -62,7 +62,7 @@ class CommentsController extends AppController {
                 //バリデーションやSQLエラーで保存できない場合
 
                 $this->set('valerror', $this->Comment->validationErrors);
-                $this->render('/comments/error','ajax');
+                $this->render('/Comments/error','ajax');
 
                 //$this->Session->write('errors.Comment',$this->Comment->validationErrors);
                 //$this->Session->setFlash(__('Failed to save.'));
