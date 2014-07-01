@@ -20,7 +20,11 @@ $this->log($this->request->data['Comment']['body'], 'debug');
 $this->log($this->request->data['Comment']['commenter'], 'debug');
 
 $sub_id = $this->request->data['Comment']['subject_id'] ;
-$body = $this->request->data['Comment']['body'] ;
+$body = $this->request->data['Comment']['body'];
+
+// 改行を表示時にbrとして出力する
+$body = str_replace(array("\r\n","\r","\n"), '<br>', $body );
+
 $commenter = $this->request->data['Comment']['commenter'] ;
 
 $box = "";
